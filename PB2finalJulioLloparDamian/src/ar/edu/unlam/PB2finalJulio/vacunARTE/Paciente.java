@@ -17,6 +17,36 @@ public class Paciente implements Comparable<Paciente>{
 
 	}
 	
+	public Boolean vacunadoParaCovid1(Paciente paciente) {
+		Boolean vacunado = false;
+		Vacuna covidUno = new Covid19Primer("covidUno");
+		
+		for (Vacuna vacuna : vacunas) {
+			if(vacuna.getNombre().equalsIgnoreCase(covidUno.getNombre())){
+				vacunado = true;
+			}
+		}
+		return vacunado;
+	}
+	
+	public Boolean vacunadoParaCovid2(Paciente paciente) {
+		Boolean vacunado = false;
+		Vacuna covidDos = new Covid19Segunda("covidDos");
+		
+		for (Vacuna vacuna : vacunas) {
+			if(vacuna.getNombre().equalsIgnoreCase(covidDos.getNombre())){
+				vacunado = true;
+			}
+		}
+		return vacunado;
+	}
+	
+	
+	public Boolean ingresarVacunas(Vacuna vacuna) {
+		
+		return vacunas.add(vacuna);
+	}
+	
 	public Integer cantidadDeVacunasAplicadas() {
 		
 		return vacunas.size();
@@ -65,5 +95,7 @@ public class Paciente implements Comparable<Paciente>{
 		// TODO Auto-generated method stub
 		return this.nombre.compareToIgnoreCase(o.getNombre());
 	}
+	
+	
 
 }
