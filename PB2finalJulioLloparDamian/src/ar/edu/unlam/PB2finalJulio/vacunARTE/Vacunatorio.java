@@ -71,12 +71,15 @@ public class Vacunatorio {
 
 	}
 	
-	public Boolean comprobarSiTieneMasDeDosVacunasDistintas(Paciente paciente) {
+	public Boolean comprobarSiTieneMasDeDosVacunasDistintas(Paciente paciente) throws NoMoreVaccineException {
 		
-		Boolean tieneMas=false;
+		Boolean tieneMas=true;
 		Integer esperado = paciente.contarvacunasDistintas(paciente);
-		if(esperado>2) {
-			tieneMas=true;
+		if(!(esperado>2)) {
+			tieneMas=false;
+		}else {
+			throw new NoMoreVaccineException();
+
 		}
 		return tieneMas;
 		

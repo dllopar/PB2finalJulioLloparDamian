@@ -8,6 +8,7 @@ import ar.edu.unlam.PB2finalJulio.vacunARTE.Covid19Primer;
 import ar.edu.unlam.PB2finalJulio.vacunARTE.Covid19Segunda;
 import ar.edu.unlam.PB2finalJulio.vacunARTE.HepatitisA;
 import ar.edu.unlam.PB2finalJulio.vacunARTE.NoCovidVaccineException;
+import ar.edu.unlam.PB2finalJulio.vacunARTE.NoMoreVaccineException;
 import ar.edu.unlam.PB2finalJulio.vacunARTE.Paciente;
 import ar.edu.unlam.PB2finalJulio.vacunARTE.Rubeola;
 import ar.edu.unlam.PB2finalJulio.vacunARTE.Vacuna;
@@ -72,7 +73,7 @@ public class VacunatorioTest {
 	}
 	
 	@Test
-	public void testQuecompruebaQueElPAcientePoseeMasDeDosVacunasDistintas() {
+	public void testQuecompruebaQueElPAcienteNoPoseeMasDeDOsVacunas() throws NoMoreVaccineException {
 		
 		Vacunatorio vacunarte = new Vacunatorio("VacunARTE");
 		Paciente marcelo = new Paciente("Marcelo", 222555);
@@ -84,9 +85,10 @@ public class VacunatorioTest {
 		marcelo.ingresarVacunas(coviduno);
 		marcelo.ingresarVacunas(coviddos);
 		marcelo.ingresarVacunas(hepatitisA);
-		marcelo.ingresarVacunas(rubeola);
+		//marcelo.ingresarVacunas(rubeola);
 		
-		assertTrue(vacunarte.comprobarSiTieneMasDeDosVacunasDistintas(marcelo));
+		
+		assertFalse(vacunarte.comprobarSiTieneMasDeDosVacunasDistintas(marcelo));
 	}
 	
 
