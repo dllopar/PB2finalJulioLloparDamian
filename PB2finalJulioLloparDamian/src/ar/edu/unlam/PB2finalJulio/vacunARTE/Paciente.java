@@ -1,6 +1,8 @@
 package ar.edu.unlam.PB2finalJulio.vacunARTE;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class Paciente implements Comparable<Paciente>{
@@ -8,12 +10,14 @@ public class Paciente implements Comparable<Paciente>{
 	private String nombre;
 	private Integer dni;
 	private Set<Vacuna> vacunas;
+	private List<String>enfermedades;
 
 	public Paciente(String nombre, Integer dni) {
 
 		this.nombre = nombre;
 		this.dni = dni;
 		vacunas= new HashSet<>();
+		enfermedades= new ArrayList<>();
 
 	}
 	
@@ -39,6 +43,18 @@ public class Paciente implements Comparable<Paciente>{
 			}
 		}
 		return vacunado;
+	}
+	
+	public Integer contarvacunasDistintas(Paciente paciente) {
+		Integer contador = 0;
+		Integer vacunasAplicadas= this.cantidadDeVacunasAplicadas();
+		
+		if(this.vacunadoParaCovid1(paciente) && this.vacunadoParaCovid2(paciente)) {
+			contador=vacunasAplicadas-1;
+		}
+		return contador;
+		
+		
 	}
 	
 	
@@ -94,6 +110,19 @@ public class Paciente implements Comparable<Paciente>{
 	public int compareTo(Paciente o) {
 		// TODO Auto-generated method stub
 		return this.nombre.compareToIgnoreCase(o.getNombre());
+	}
+
+	public List<String> getEnfermedades() {
+		return enfermedades;
+	}
+
+	public void setEnfermedades(List<String> enfermedades) {
+		this.enfermedades = enfermedades;
+	}
+	
+	public Boolean ingresarAlListadoDeEnfermedades(String enfermedad) {
+		
+		return enfermedades.add(enfermedad);
 	}
 	
 	

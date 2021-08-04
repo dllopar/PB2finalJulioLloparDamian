@@ -51,4 +51,35 @@ public class Vacunatorio {
 		return apto;
 	}
 
+	public Boolean verificarSiPuedeRecibirVacunaRubeola(Paciente paciente) {
+
+		Boolean noapto = false;
+		if (paciente.getEnfermedades().equals("rubeola")) {
+			noapto = true;
+		}
+		return noapto;
+
+	}
+
+	public Boolean verificarSiPuedeRecibirVacunaHepatitis(Paciente paciente) {
+
+		Boolean noapto = false;
+		if (paciente.getEnfermedades().equals("hepatitis")) {
+			noapto = true;
+		}
+		return noapto;
+
+	}
+	
+	public Boolean comprobarSiTieneMasDeDosVacunasDistintas(Paciente paciente) {
+		
+		Boolean tieneMas=false;
+		Integer esperado = paciente.contarvacunasDistintas(paciente);
+		if(esperado>2) {
+			tieneMas=true;
+		}
+		return tieneMas;
+		
+	}
+
 }
