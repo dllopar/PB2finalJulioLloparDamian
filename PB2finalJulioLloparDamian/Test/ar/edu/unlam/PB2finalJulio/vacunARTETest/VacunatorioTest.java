@@ -137,32 +137,6 @@ public class VacunatorioTest {
 		
 	}
 	
-	@Test
-	public void testQuecompruebaQueLosPacientesEstenOrdenadosPorDni() {
-		
-		Vacunatorio vacunarte = new Vacunatorio("VacunARTE");
-		Paciente marcelo = new Paciente("Marcelo", 222);
-		Paciente carla = new Paciente("carla", 333);
-		Paciente fabiana = new Paciente("fabiana", 444);
-		Covid19Primer coviduno = new Covid19Primer("covidUno");
-		Covid19Segunda coviddos = new Covid19Segunda("covidDos");
-		Rubeola rubeola = new Rubeola("Rubeola");
-		HepatitisA hepatitisA = new HepatitisA("hepatitisuno");
-		
-		marcelo.ingresarVacunas(coviduno);
-		fabiana.ingresarVacunas(hepatitisA);
-		carla.ingresarVacunas(rubeola);
-		
-		vacunarte.ingresarPacientesVacunados(carla);
-		vacunarte.ingresarPacientesVacunados(fabiana);
-		vacunarte.ingresarPacientesVacunados(marcelo);
-		
-		vacunarte.ordenarPacientesPorNumeroDeDni();
-		
-		assertEquals(vacunarte.getVacunados().first(), marcelo);
-		assertEquals(vacunarte.getVacunados().last(), fabiana);
-		
-	}
-	
+
 
 }
