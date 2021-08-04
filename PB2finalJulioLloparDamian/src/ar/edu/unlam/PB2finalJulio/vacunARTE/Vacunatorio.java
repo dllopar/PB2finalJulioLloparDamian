@@ -21,8 +21,8 @@ public class Vacunatorio {
 		this.nombre = nombre;
 	}
 
-	public Set<Paciente> getVacunados() {
-		return vacunados;
+	public TreeSet<Paciente> getVacunados() {
+		return (TreeSet<Paciente>) vacunados;
 	}
 
 	public void setVacunados(Set<Paciente> vacunados) {
@@ -83,6 +83,20 @@ public class Vacunatorio {
 		}
 		return tieneMas;
 		
+	}
+	
+	public void ingresarPacientesVacunados(Paciente paciente) {
+		Integer esperado = paciente.cantidadDeVacunasAplicadas();
+		if(esperado >0) {
+			vacunados.add(paciente);
+		}
+	}
+	
+	public TreeSet<Paciente> ordenarPacientesPorNumeroDeDni(){
+		OrdenPorDni nuevoOrden = new OrdenPorDni();
+		TreeSet<Paciente> TSOrdenado = new TreeSet<>(nuevoOrden);
+		TSOrdenado.addAll(vacunados);
+		return TSOrdenado;
 	}
 
 }
